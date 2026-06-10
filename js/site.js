@@ -88,7 +88,9 @@
   var app = document.getElementById("app");
   if (!app) return;
   var standalone = page === "login";
-  app.innerHTML = (standalone ? "" : header()) + (pages[page] || "") + (standalone ? "" : footer());
+  if (!app.children.length) {
+    app.innerHTML = (standalone ? "" : header()) + (pages[page] || "") + (standalone ? "" : footer());
+  }
 
   document.querySelectorAll(".add-cart").forEach(function (button) {
     button.addEventListener("click", function () {
